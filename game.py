@@ -22,11 +22,12 @@ def turn(player, board):
     move = Move(player, [int(row), int(column)])
 
     board.add_move(move)
+    board.display()
 
 moves_made = 0
 
 while moves_made <= 9:
     turn(player1, game_board)
-    game_board.display()
+    moves_made += 1
     turn(player2, game_board)
-    game_board.display()
+    moves_made += 1

@@ -24,7 +24,7 @@ class Board():
     def add_move(self, move):
         # space = self.moves[move.position[0]][move.position[1]]
         if self.moves[move.position[0]][move.position[1]] != '_':
-            print('Space already occupied!\n Invalid move!')
+            print('Space already occupied! \nInvalid move!')
         else:
             self.moves[move.position[0]][move.position[1]] = move.author.game_piece
 
@@ -37,8 +37,3 @@ class Game():
         self.player2 = player2
         # self.started_at = started_at
         # self.finished_at = finished_at
-
-    def player1_turn(self):
-        print(f"{self.player1.name}'s turn")
-        row = int(input("Enter a row number: "))
-        column = int(input("Enter a column number: "))

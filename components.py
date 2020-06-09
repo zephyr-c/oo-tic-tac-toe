@@ -15,26 +15,30 @@ class Move():
 class Board():
     """Game Board containing/displaying the moves of the game"""
 
-    def __init__(self):
-        self.moves = [['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']]
+    moves = [[' ', '1', '2', '3'], ['1', '_', '_', '_'], ['2', '_', '_', '_'], ['3', '_', '_', '_']]
 
     def display(self):
         for row in self.moves:
             print(' '.join(row))
 
-    def add_move(self, player, location):
-        space = self.moves[location[0]][location[1]]
-        if space != '_':
+    def add_move(self, move):
+        # space = self.moves[move.position[0]][move.position[1]]
+        if self.moves[move.position[0]][move.position[1]] != '_':
             print('Space already occupied!\n Invalid move!')
         else:
-            space = player.game_piece
+            self.moves[move.position[0]][move.position[1]] = move.author.game_piece
 
 class Game():
     """An instance of a game of tic-tac-toe"""
 
-    def __init__(self, board, player1, player2, started_at, finished_at):
+    def __init__(self, board, player1, player2):
         self.board = board
         self.player1 = player1
         self.player2 = player2
-        self.started_at = started_at
-        self.finished_at = finished_at
+        # self.started_at = started_at
+        # self.finished_at = finished_at
+
+    def player1_turn(self):
+        print(f"{self.player1.name}'s turn")
+        row = int(input("Enter a row number: "))
+        column = int(input("Enter a column number: "))

@@ -13,6 +13,7 @@ print(f"Player 2 will be {p2_piece}")
 player1 = Player(p1_name, p1_piece)
 player2 = Player(p2_name, p2_piece)
 game_board = Board()
+game = Game(game_board, player1, player2)
 game_board.display()
 
 def turn(player, board):
@@ -26,8 +27,13 @@ def turn(player, board):
 
 moves_made = 0
 
-while moves_made <= 9:
+while moves_made < 9:
     turn(player1, game_board)
     moves_made += 1
     turn(player2, game_board)
     moves_made += 1
+
+    if moves_made >=3:
+        game.check_winner()
+
+print(f"The winner is {game.winner.name}!")
